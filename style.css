@@ -1,0 +1,1265 @@
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --color-primary:   #c54f01;   /* Burnt orange — header background  */
+  --color-secondary: #d86a2f;   /* Lighter orange — hover accents    */
+
+  /* Neutrals */
+  --color-bg:          #ffffff;
+  --color-surface:     #f5f5f5;
+  --color-border:      #dddddd;
+  --color-text:        #1a1a1a;
+  --color-text-muted:  #666666;
+  --color-white:       #ffffff;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 20px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Catamaran;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* Body: 16px / 400 set on body above */
+
+/* Meta / caption text */
+.card-label,
+.footer-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0 var(--space-xl);
+}
+
+/* Logo + nav in one row */
+.header-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 52px;
+}
+
+.logo-link {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   PRIMARY NAVIGATION
+   ============================================================ */
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.nav-link {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Cart icon link — vertically centred, no extra padding */
+.nav-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xs);
+}
+
+.cart-icon {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-white);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.2s ease;
+}
+
+.nav-cart:hover .cart-icon {
+  stroke: var(--color-secondary);
+}
+
+/* ============================================================
+   MAIN WRAPPER
+   ============================================================ */
+.site-main {
+  max-width: 860px;
+  margin: var(--space-lg) auto;
+  padding:  var(--space-md);
+}
+
+/* Page title */
+.page-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-xl);
+  padding: var(--space-lg) var(--space-xl);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.footer-sep {
+  margin: 0 var(--space-sm);
+}
+
+.footer-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+/* ============================================================
+    INDEX PAGE (index.html)
+   ============================================================ */
+
+
+
+/* ============================================================
+   HERO / CAROUSEL SECTION
+   ============================================================ */
+.index-hero-carousel {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 300px;
+  margin-bottom: var(--space-lg);
+}
+
+/* All slides stacked; only .active is visible */
+.index-carousel-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.index-carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.index-carousel-image.active {
+  opacity: 1;
+}
+
+/* Prev / Next buttons */
+.index-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-white);
+  cursor: pointer;
+  z-index: 2;
+  padding: var(--space-sm);
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.2s ease;
+}
+
+.index-carousel-btn:hover {
+  color: var(--color-secondary);
+}
+
+.index-carousel-btn--prev { left: var(--space-md); }
+.index-carousel-btn--next { right: var(--space-md); }
+
+/* ============================================================
+   PRODUCTS SECTION
+   ============================================================ */
+.index-products-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.index-products-heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+    
+/* Four-column grid */
+.index-card-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* Individual product card */
+.index-product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  gap: var(--space-sm);
+}
+
+.index-card-link {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+/* Square card image */
+.index-card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  transition: opacity 0.2s ease;
+}
+
+.index-card-link:hover .index-card-image {
+  opacity: 0.85;
+}
+
+/* Caption below image */
+.index-card-label {
+  font-family: Catamaran;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-primary );
+  text-align: center;
+}
+
+/* Caption below card-label */
+.index-card-price {
+  font-family: Catamaran;
+  font-size: 14px;
+  font-weight: 400;
+  color: grey;
+  text-align: center;
+}
+
+/* ============================================================
+   VIEW ALL BUTTON
+   ============================================================ */
+.index-view-all-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-sm) 0 var(--space-xl);
+}
+
+.index-btn-view-all {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  color: grey;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: var(--space-sm) var(--space-xl);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.index-btn-view-all:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+
+/* ============================================================
+   ALL PRODUCTS PAGE (products.html)
+   ============================================================ */
+
+
+
+/* ============================================================
+   PRODUCT GROUP (one per stock-status category)
+   ============================================================ */
+.products-product-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* Group heading — "In-Stock", "Preorder", etc. */
+.products-group-heading {
+  font-size: 25px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   CARD GRID
+   Four columns per row; cards wrap naturally to a new row
+   ============================================================ */
+.products-card-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* ============================================================
+   PRODUCT CARD
+   ============================================================ */
+.products-product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  /* 4 columns with gap: calc fills exactly one quarter minus gaps */
+  width: calc(25% - 12px);
+}
+
+.products-card-link {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+/* Square card image */
+.products-card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s ease;
+}
+
+.products-card-link:hover .products-card-image {
+  opacity: 0.85;
+}
+
+/* Caption below image */
+.products-card-label {
+  font-family: Catamaran;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-primary );
+  text-align: left;
+}
+
+/* Caption below card-label */
+.products-card-price {
+  font-family: Catamaran;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   INDIVIDUAL PRODUCT PAGE (soloproduct.html)
+   ============================================================ */
+
+
+
+/* ============================================================
+   PRODUCT DETAIL — two-column layout
+   ============================================================ */
+.product-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+/* ---- Gallery column ---- */
+.gallery-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  flex: 0 0 400px;
+}
+
+.main-image-wrapper {
+  width: 100%;
+  height: 380px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Placeholder before images are uploaded */
+.main-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-surface);
+}
+
+.placeholder-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 0 var(--space-md);
+}
+
+/* Thumbnail strip */
+.thumbnail-strip {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.thumb-btn {
+  position: relative;
+  width: 94px;
+  height: 94px;
+  padding: 0;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.thumb-btn.active  { border-color: var(--color-primary); }
+.thumb-btn:hover   { border-color: var(--color-secondary); }
+
+.thumb-image { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Info column ---- */
+.info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  flex: 1;
+  padding-top: var(--space-sm);
+}
+
+.product-title    { font-size: 32px; font-weight: 700; color: var(--color-text); }
+.product-subtitle { font-size: 16px; font-weight: 400; color: var(--color-text-muted); }
+.product-price    { font-size: 24px; font-weight: 700; color: var(--color-text); margin-top: var(--space-xs); }
+.stock-status     { font-size: 16px; font-weight: 400; color: var(--color-primary); margin-top: var(--space-sm); }
+.stock-eta        { font-size: 14px; color: var(--color-text-muted); }
+.product-notice   { font-size: 16px; font-weight: 400; color: var(--color-text); margin-top: var(--space-md); }
+
+/* ---- Style selector ---- */
+.style-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  width: 100%;
+}
+
+.style-label { font-size: 16px; font-weight: 400; color: var(--color-text); white-space: nowrap; }
+.select-wrapper { position: relative; flex: 1; }
+
+.style-select {
+  width: 100%;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  appearance: none;
+  cursor: pointer;
+}
+
+.style-select:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+.select-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* ============================================================
+   PER-OPTION IMAGE UPLOAD SLOT
+   Each .option-slot is shown/hidden by JS when the matching
+   dropdown value is selected.
+   ============================================================ */
+.option-upload-block {
+  width: 100%;
+  margin-top: var(--space-xs);
+}
+
+/* One slot — flex row containing label, count, clear button */
+.option-slot {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Styled upload label acts as the visible button */
+.upload-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.upload-label:hover { background-color: var(--color-secondary); }
+
+/* Native file input — visually hidden, keyboard accessible */
+.upload-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Image count badge */
+.upload-count {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+/* Per-option clear button */
+.btn-clear-option {
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-clear-option:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+/* ============================================================
+   QUANTITY STEPPER + ADD TO CART
+   ============================================================ */
+.purchase-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.quantity-stepper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-white);
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.qty-btn:hover { background-color: var(--color-surface); }
+
+.qty-input {
+  width: 48px;
+  height: 36px;
+  border: none;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  text-align: center;
+  background-color: var(--color-white);
+}
+
+.qty-input::-webkit-inner-spin-button,
+.qty-input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.qty-input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.btn-add-to-cart {
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add-to-cart:hover { background-color: var(--color-secondary); }
+
+/* ============================================================
+   TABS SECTION
+   ============================================================ */
+.tabs-section { border-top: 1px solid var(--color-border); padding-top: var(--space-md); }
+
+.tab-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: var(--space-md);
+}
+
+.tab-btn {
+  background-color: transparent;
+  border: none;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); font-weight: 700; }
+.tab-btn:hover:not(.active) { color: var(--color-secondary); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ============================================================
+   SPECIFICATIONS TABLE
+   ============================================================ */
+.spec-table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.spec-row { border-bottom: 1px solid var(--color-border); }
+.spec-key {
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  padding: var(--space-sm) var(--space-md);
+  width: 160px;
+  text-align: left;
+  white-space: nowrap;
+}
+.spec-val { font-weight: 400; color: var(--color-text); padding: var(--space-sm) var(--space-md); }
+
+/* ============================================================
+   ADDITIONAL IMAGES
+   ============================================================ */
+.additional-image-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.additional-image {
+  flex: 1;
+  height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+/* =============================================================
+   ABOUT US PAGE (aboutus.html)
+   ============================================================ */
+
+   
+/* ============================================================
+   HEADER
+   ============================================================ */
+.a-site-header {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0 var(--space-xl);
+}
+
+.a-header-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 52px;
+}
+
+.a-logo-link {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   PRIMARY NAVIGATION
+   ============================================================ */
+.a-nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.a-nav-link {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.a-nav-link:hover { background-color: var(--color-secondary); }
+
+/* Active page underline */
+.a-nav-link--active {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Cart icon */
+.a-nav-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xs);
+}
+
+.a-cart-icon {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-white);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.2s ease;
+}
+
+.a-nav-cart:hover .a-cart-icon { stroke: var(--color-secondary); }
+
+/* ============================================================
+   STATS BANNER
+   Full-width grey hero strip
+   ============================================================ */
+.a-stats-banner {
+  background-color: #2d2d2d;
+  padding: var(--space-lg) var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Small label above the circles ("Image" in the wireframe) */
+.a-stats-banner-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-white);
+}
+
+/* Three stat items spread evenly */
+.a-stats-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-2xl);
+  width: 100%;
+  max-width: 720px;
+}
+
+/* Individual stat item — circle + caption stacked */
+.a-stat-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Circular image frame */
+.a-stat-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.a-stat-image {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+}
+
+.a-stat-image2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Caption below circle */
+.a-stat-caption {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-white);
+  text-align: center;
+}
+
+/* ============================================================
+   VISION / MISSION SECTION
+   ============================================================ */
+.a-about-section {
+  max-width: 860px;
+  margin: var(--space-2xl) auto;
+  padding: 0 var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: Center;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Each row: text block + image block side by side */
+.a-about-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  /* No gap — blocks butt up against each other like the wireframe */
+}
+
+
+/* Text half */
+.a-about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  flex: 1;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.a-about-heading {
+  font-size: 25px;
+  font-weight: 700;
+  color: #c54f01;
+}
+
+.a-about-body {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+/* Image half */
+.a-about-image-wrapper {
+  flex: 1;
+  min-height: 280px;
+  background-color: var(--color-surface);
+  overflow: hidden;
+}
+
+.a-about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================================
+   CONTACT US PAGE (contactus1.html)
+   ============================================================ */
+.c-site-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--space-xl);
+}
+
+/* ============================================================
+   INFO ROW — FAQ left, support details right
+   ============================================================ */
+.info-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-xl);
+}
+
+/* ---- FAQ column ---- */
+.faq-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  flex: 1;
+}
+
+.faq-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  text-align: left;
+}
+
+.faq-question {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.faq-answer {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ---- Support column ---- */
+.support-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.support-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.support-label {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.support-value {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+
+.support-email {
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+.support-email:hover { color: var(--color-primary); }
+
+/* Instagram row */
+.social-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.social-handle {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-primary  );
+}
+
+.social-handle2 {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-secondary );
+}
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--space-md);
+}
+
+/* Name + Email side by side */
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: var(--space-md);
+}
+
+/* Name field — narrower */
+.form-group--name { flex: 0 0 160px; }
+
+/* Email field — takes remaining space */
+.form-group--email { flex: 1; }
+
+/* Generic form group — label stacked above input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+/* Text inputs */
+.form-input {
+  width: 100%;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-sm);
+  height: 36px;
+}
+
+.form-input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Textarea */
+.form-textarea {
+  width: 100%;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  resize: vertical;
+}
+
+.form-textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
