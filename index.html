@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Based Ouroboros</title>
+    <!-- Google Fonts: Roboto -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- External stylesheet -->
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+
+    <!-- =====================
+         HEADER
+    ===================== -->
+    <header class="site-header">
+      <div class="header-inner">
+
+        <!-- Logo -->
+        <div class="logo">
+          <a href="index.html" class="logo-link">Based Ouroboros</a>
+        </div>
+
+        <!-- Primary Navigation -->
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="products.html" class="nav-link">All Products</a></li>
+            <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contactus.html" class="nav-link">Contact Us</a></li>
+            <!-- Cart icon -->
+            <li class="nav-item">
+              <a href="#" class="nav-link nav-cart" aria-label="Shopping cart">
+                <svg
+                  class="cart-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+
+    <!-- =====================
+         MAIN CONTENT
+    ===================== -->
+    <main class="site-main">
+
+      <!-- =====================
+           HERO / CAROUSEL SECTION
+      ===================== -->
+      <section class="index-hero-carousel" aria-label="Featured image carousel">
+
+        <!-- Previous arrow -->
+        <button class="index-carousel-btn index-carousel-btn--prev" aria-label="Previous slide">&lt;</button>
+
+        <!-- Carousel track — images swap every 5 seconds via JS -->
+        <div class="index-carousel-track">
+          <img
+            src="/Images/NewRelease01.png"
+            alt="Featured banner slide 1"
+            class="index-carousel-image active"
+          />
+          <img
+            src="/Images/NewRelease02.png"
+            alt="Featured banner slide 2"
+            class="index-carousel-image"
+          />
+          <!-- <img
+            src="/Images/NewRelease03.png"
+            alt="Featured banner slide 3"
+            class="index-carousel-image"
+          /> -->
+        </div>
+
+        <!-- Next arrow -->
+        <button class="index-carousel-btn index-carousel-btn--next" aria-label="Next slide">&gt;</button>
+
+      </section>
+
+      <!-- =====================
+           FEATURED PRODUCTS SECTION
+      ===================== -->
+      <section class="index-products-section" aria-labelledby="products-heading">
+
+        <!-- Section heading -->
+        <h2 id="products-heading" class="index-products-heading">Featured Products</h2>
+
+        <!-- Four-column product card grid -->
+        <div class="index-card-grid">
+
+          <!-- Product card 1 -->
+          <article class="index-product-card">
+            <a href="soloproduct.html" class="index-card-link">
+              <img
+                src="/Images/LumineBracelet01.png"
+                alt="Bracelet product 1"
+                class="index-card-image"
+              />
+            </a>
+            <p class="index-card-label">Lumine Inspired Bracelet</p>
+            <p class="index-card-price">$19.99</p>
+          </article>
+
+          <!-- Product card 2 -->
+          
+          <article class="index-product-card">
+            <a href="#" class="index-card-link">
+              <img
+                src="/Images/DilucBracelet01.png"
+                alt="Bracelet product 2"
+                class="index-card-image"
+              />
+            </a>
+            <p class="index-card-label">Diluc Inspired Bracelet</p>
+            <p class="index-card-price">$19.99</p>
+          </article>
+
+          <!-- Product card 3 -->
+          <article class="index-product-card">
+            <a href="#" class="index-card-link">
+              <img
+                src="/Images/RaidenShogunNecklace01.png"
+                alt="Necklace product 3"
+                class="index-card-image"
+              />
+            </a>
+            <p class="index-card-label">Raiden Shogun Inspired Necklace</p>
+            <p class="index-card-price">$14.99</p>
+          </article>
+
+          <!-- Product card 4 -->
+          <article class="index-product-card">
+            <a href="#" class="index-card-link">
+              <img
+                src="/Images/ChascaEarring01.png"
+                alt="Earring product 4"
+                class="index-card-image"
+              />
+            </a>
+            <p class="index-card-label">Chasca Inspired Earring</p>
+            <p class="index-card-price">$19.99</p>
+          </article>
+
+        </div>
+
+        <!-- View All CTA -->
+        <div class="index-view-all-wrapper">
+          <a href="products.html" class="index-btn-view-all">View All Products</a>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- =====================
+         FOOTER
+    ===================== -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">
+          &copy; 2026, Based Ouroboros
+          <span class="footer-sep">|</span>
+          <a href="#" class="footer-link">Shipping policy</a>
+          <span class="footer-sep">|</span>
+          <a href="#" class="footer-link">Terms of service</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Carousel: auto-flip every 5 s, manual prev / next -->
+    <script>
+      (function () {
+        var images  = document.querySelectorAll('.carousel-image');
+        var prevBtn = document.querySelector('.carousel-btn--prev');
+        var nextBtn = document.querySelector('.carousel-btn--next');
+        var current = 0;
+        var timer;
+
+        function showSlide(index) {
+          images[current].classList.remove('active');
+          current = (index + images.length) % images.length;
+          images[current].classList.add('active');
+        }
+
+        function startTimer() {
+          timer = setInterval(function () { showSlide(current + 1); }, 5000);
+        }
+
+        function resetTimer() { clearInterval(timer); startTimer(); }
+
+        prevBtn.addEventListener('click', function () { showSlide(current - 1); resetTimer(); });
+        nextBtn.addEventListener('click', function () { showSlide(current + 1); resetTimer(); });
+
+        startTimer();
+      })();
+    </script>
+
+  </body>
+</html>
